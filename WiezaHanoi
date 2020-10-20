@@ -1,0 +1,122 @@
+kijek1 = [1, 2, 3, 4, 5]
+kijek2 = [0, 0, 0, 0, 0]
+kijek3 = [0, 0, 0, 0, 0]
+
+
+def przeloz(kijek):
+	nastepnyKijek = kijek + 1
+	if nastepnyKijek > 3: 
+		nastepnyKijek = 1
+	klocek = zabierzPierwszyZGory(kijek)
+	odlozonoNaKijek = odlozKlocek(nastepnyKijek, klocek)
+	if klocek > 0 and  odlozonoNaKijek > 0:
+		print ("Przenies klocek ", klocek, " z kijka  ", kijek," na kijek ", odlozonoNaKijek)
+		usunZabranyKlocek(kijek)
+		return odlozonoNaKijek
+	return 0
+
+
+def zabierzPierwszyZGory(kijek):
+	if kijek == 1: 
+		for i in range (0,5):
+			if kijek1[i] > 0:
+				klocek = kijek1[i]
+				return klocek
+	if kijek == 2: 
+		for i in range (0,5):
+			if kijek2[i] > 0:
+				klocek = kijek2[i]
+				return klocek
+	if kijek == 3: 
+		for i in range (0,5):
+			if kijek3[i] > 0:
+				klocek = kijek3[i]
+				return klocek
+	return 0
+
+def usunZabranyKlocek(kijek):
+	for i in range (0,5):
+		if kijek == 1:
+			if kijek1[i] > 0: 
+				kijek1[i] = 0
+				return 1
+		if kijek == 2:
+			if kijek2[i] > 0: 
+				kijek2[i] = 0
+				return 1
+		if kijek == 3:
+			if kijek3[i] > 0: 
+				kijek3[i] = 0
+				return 1
+
+def odlozKlocek(kijek, klocek):
+
+	if kijek == 1: 
+		for i in range (4,-1,-1):
+			if kijek1[i] == 0 and i == 4:
+				kijek1[i] = klocek
+				return 1
+			elif kijek1[i] == 0 and i < 4 and kijek1[i+1] > klocek:
+				kijek1[i] = klocek
+				return 1
+
+		for i in range (4,-1,-1):
+			if kijek2[i] == 0 and i == 4:
+				kijek2[i] = klocek
+				return 2
+			elif kijek2[i] == 0 and i < 4 and kijek2[i+1] > klocek:
+				kijek2[i] = klocek
+				return 2
+		return 0
+
+	if kijek == 2: 
+		for i in range (4,-1,-1):
+			if kijek2[i] == 0 and i == 4:
+				kijek2[i] = klocek
+				return 2
+			elif kijek2[i] == 0 and i < 4 and kijek2[i+1] > klocek:
+				kijek2[i] = klocek
+				return 2
+
+		for i in range (4,-1,-1):
+			if kijek3[i] == 0 and i == 4:
+				kijek3[i] = klocek
+				return 3
+			elif kijek3[i] == 0 and i < 4 and kijek3[i+1] > klocek:
+				kijek3[i] = klocek
+				return 3
+		return 0
+
+	if kijek == 3: 
+		for i in range (4,-1,-1):
+			if kijek3[i] == 0 and i == 4:
+				kijek3[i] = klocek
+				return 3
+			elif kijek3[i] == 0 and i < 4 and kijek3[i+1] > klocek:
+				kijek3[i] = klocek
+				return 3
+
+		for i in range (4,-1,-1):
+			if kijek1[i] == 0 and i == 4:
+				kijek1[i] = klocek
+				return 1
+			elif kijek1[i] == 0 and i < 4 and kijek1[i+1] > klocek:
+				kijek1[i] = klocek
+				return 1
+		return 0
+
+kijek = 1
+while sum(kijek2[:]) < 15:
+
+	przelozonoNa = przeloz(kijek)
+	if  przelozonoNa > 0:
+		kijek = przelozonoNa + 1
+		if kijek > 3: kijek = 1
+	else:
+		kijek = kijek + 1
+		if kijek > 3: kijek = 1
+
+print("Koncowy wynik przełożenia: ")
+print (kijek1[0], kijek1[1], kijek1[2], kijek1[3], kijek1[4])
+print (kijek2[0], kijek2[1], kijek2[2], kijek2[3], kijek2[4])
+print (kijek3[0], kijek3[1], kijek3[2], kijek3[3], kijek3[4])
