@@ -1,0 +1,53 @@
+from random import randint
+from random import seed
+
+array = []
+def Losuj(n):
+	seed(1)
+	for i in range(n):
+		if i == 0:
+			row = []
+			for x in range(n+2):
+				row.append(0)
+			array.append(row)
+		row = [0]
+		for j in range(n):
+			row.append(randint(1,9))
+		row.append(0)
+		array.append(row)
+
+	row = []
+	for x in range(n+2):
+		row.append(0)
+	array.append(row)
+	return array
+
+
+
+val = int(input("Podaj rozmiar kwadratu: "))
+Losuj(val)
+
+
+for i in array:
+	print(i)
+
+
+
+row = 1
+col = 1
+suma = array[col][row]
+
+
+while array[col][row] != 0:
+	if array[col][row+1] >= array[col+1][row]:
+		suma += array[col][row+1]
+		row += 1
+	else:
+		suma += array[col + 1][row]
+		col += 1
+
+print(suma)
+
+
+
+	
