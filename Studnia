@@ -1,0 +1,11 @@
+k % m != 0
+k lub m = n
+
+jesli k i m rozne od n wtedy m musi dzielic k z reszta rozna od 0 
+
+
+1. Mniejszym wiadrem napelniamy duze
+2. Gdy duze jest pelne wylewamy je do studni
+3. Przelewamy reszte z małego do dużego wiadra
+4. Wracamy do punktu 1
+-- Po kazdym punkcie sprawdzamy czy k lub m = n
