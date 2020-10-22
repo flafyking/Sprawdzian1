@@ -1,0 +1,10 @@
+maksWaga = 120
+uczestnicy = [80,70,60,65,40,30]
+
+uczestnicy = sorted(uczestnicy)
+i = 0
+x = len(uczestnicy) - 1
+while i < x-i:
+	if uczestnicy[i] + uczestnicy[x - i] <= maksWaga:
+		print(uczestnicy[i], " + ", uczestnicy[x - i])
+	i += 1
