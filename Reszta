@@ -1,0 +1,29 @@
+money =[]
+reszta = []
+
+
+for i in range(int(input("Ile banknotow posiadasz: "))):
+	money.append(int(input("Podaj kolejny banknot: ")))
+
+money = sorted(money, reverse = True)
+
+for i in money:
+	print(i)
+
+def WydajReszte(kwota):
+	for j in range(len(money)):
+		n = 0
+		for i in range(len(money)):
+			if money[i] <= kwota and money[i] > n:
+				n = money[i]
+				money[i] = 0
+				reszta.append(n)
+		kwota -= n
+	if kwota > 0:
+		print("Nie udalo sie wydac reszty")
+
+
+WydajReszte(int(input("Podaj kwote: ")))
+
+for i in range(len(reszta)):
+	print(reszta[i])
